@@ -100,7 +100,7 @@ export function Projects() {
                   <Link
                     to="/projects/$id"
                     params={{ id: project.id }}
-                    className="inline-flex items-center gap-3 rounded-full bg-background px-6 py-3 shadow-md border border-border transition-transform hover:scale-105 w-full justify-center group/btn"
+                    className="inline-flex items-center gap-3 rounded-xl bg-background px-6 py-3 shadow-md border border-border transition-transform hover:scale-105 w-full justify-center group/btn"
                   >
                     <span className="font-sans text-[10px] font-black tracking-[0.2em] text-foreground uppercase group-hover/btn:text-primary transition-colors">
                       {tr("projects.preview.view")}

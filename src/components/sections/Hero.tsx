@@ -52,9 +52,9 @@ export function Hero() {
             {/* LEARN MORE CTA Button */}
             <a
               href="#works"
-              className="group inline-flex items-center gap-3 rounded-full bg-card px-7 py-3.5 shadow-lg border border-border transition-all duration-300 hover:scale-105 hover:shadow-xl mt-4"
+              className="group inline-flex items-center gap-3 rounded-xl bg-card px-7 py-3.5 shadow-lg border border-border transition-all duration-300 hover:scale-105 hover:shadow-xl mt-4"
             >
-              <span className="grid size-7 place-items-center rounded-full bg-primary text-primary-foreground shadow-sm transition-transform duration-300 group-hover:rotate-12">
+              <span className="grid size-7 place-items-center rounded-xl bg-primary text-primary-foreground shadow-sm transition-transform duration-300 group-hover:rotate-12">
                 <Play className={`size-3.5 fill-primary-foreground text-primary-foreground ${dir === 'rtl' ? 'me-0.5 rotate-180' : 'ms-0.5'}`} />
               </span>
               <span className="font-sans text-xs font-black tracking-[0.2em] text-card-foreground uppercase">

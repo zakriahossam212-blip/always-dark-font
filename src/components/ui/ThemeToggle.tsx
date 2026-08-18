@@ -8,7 +8,7 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label="Toggle theme"
       suppressHydrationWarning
-      className="grid size-10 place-items-center rounded-full border border-border bg-secondary/50 text-foreground transition-colors hover:border-accent/50 hover:text-accent"
+      className="grid size-10 place-items-center rounded-xl border border-border bg-secondary/50 text-foreground transition-colors hover:border-accent/50 hover:text-accent"
     >
       {theme === "dark" ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" />}
     </button>
