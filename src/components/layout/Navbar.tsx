@@ -22,7 +22,7 @@ export function Navbar() {
         {/* Left: Logo Badge Pill */}
         <Link
           to="/"
-          className="group flex items-center gap-2.5 rounded-full bg-card text-card-foreground px-4 py-2 shadow-md border border-border transition-transform hover:scale-105 select-none"
+          className="group flex items-center gap-2.5 rounded-xl bg-card text-card-foreground px-4 py-2 shadow-md border border-border transition-transform hover:scale-105 select-none"
           aria-label={tr("common.home")}
         >
           {/* Prefix dots */}
@@ -67,7 +67,7 @@ export function Navbar() {
           <button
             onClick={toggleTheme}
             aria-label={tr("common.theme")}
-            className="grid size-9 place-items-center rounded-full bg-foreground/10 border border-border text-foreground transition-all hover:bg-foreground/20 hover:scale-105"
+            className="grid size-9 place-items-center rounded-xl bg-foreground/10 border border-border text-foreground transition-all hover:bg-foreground/20 hover:scale-105"
             title={tr("common.theme")}
           >
             {theme === "dark" ? <Sun className="size-4 text-[#FFD000]" /> : <Moon className="size-4 text-[#FF4B35]" />}
@@ -77,7 +77,7 @@ export function Navbar() {
           <button
             onClick={toggleLang}
             aria-label={tr("common.language")}
-            className="flex h-9 items-center gap-1.5 rounded-full bg-foreground/10 border border-border px-3 text-xs font-extrabold text-foreground transition-all hover:bg-foreground/20 hover:scale-105"
+            className="flex h-9 items-center gap-1.5 rounded-xl bg-foreground/10 border border-border px-3 text-xs font-extrabold text-foreground transition-all hover:bg-foreground/20 hover:scale-105"
             title={tr("common.language")}
           >
             <Globe className="size-3.5 text-[#FF4B35]" />
@@ -90,7 +90,7 @@ export function Navbar() {
               href="https://github.com/Mostafa-SAID7"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid size-9 place-items-center rounded-full bg-foreground/10 border border-border text-foreground transition-all hover:bg-foreground/20 hover:scale-105"
+              className="grid size-9 place-items-center rounded-xl bg-foreground/10 border border-border text-foreground transition-all hover:bg-foreground/20 hover:scale-105"
               aria-label="GitHub Profile"
             >
               <Github className="size-4" />
@@ -99,7 +99,7 @@ export function Navbar() {
               href="https://linkedin.com/in/mostafasamirsaid"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid size-9 place-items-center rounded-full bg-foreground/10 border border-border text-foreground transition-all hover:bg-foreground/20 hover:scale-105"
+              className="grid size-9 place-items-center rounded-xl bg-foreground/10 border border-border text-foreground transition-all hover:bg-foreground/20 hover:scale-105"
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="size-4" />
@@ -110,7 +110,7 @@ export function Navbar() {
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label={tr("common.menu")}
-            className="grid size-10 place-items-center rounded-full bg-foreground/10 border border-border text-foreground md:hidden"
+            className="grid size-10 place-items-center rounded-xl bg-foreground/10 border border-border text-foreground md:hidden"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
