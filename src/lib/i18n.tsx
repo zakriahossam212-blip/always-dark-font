@@ -111,7 +111,7 @@ export const t: Dict = {
   "footer.headline1": { en: "You can find", ar: "يمكنك أن تجدني" },
   "footer.headline2": { en: "me here:", ar: "هنا:" },
   "footer.rights": { en: "ALL RIGHTS RESERVED", ar: "جميع الحقوق محفوظة" },
-  "footer.copyright": { en: "2024 | COPYRIGHT", ar: "2024 | حقوق النشر" },
+  "footer.copyright": { en: "{year} | COPYRIGHT", ar: "{year} | حقوق النشر" },
 
   "project.detail.backAll": { en: "Back to all projects", ar: "العودة إلى كل المشاريع" },
 
