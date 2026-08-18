@@ -12,7 +12,7 @@ import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 import { describeError } from "@/lib/error-capture";
-import { ThemeProvider } from "@/lib/theme";
+import { ThemeProvider, themeBootstrapScript } from "@/lib/theme";
 import { I18nProvider, langBootstrapScript } from "@/lib/i18n";
 import { useSmoothScroll } from "@/lib/smooth-scroll";
 import { WelcomeModal } from "@/components/ui/WelcomeModal";
@@ -115,6 +115,7 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
         <script dangerouslySetInnerHTML={{ __html: langBootstrapScript }} />
         <HeadContent />
       </head>
