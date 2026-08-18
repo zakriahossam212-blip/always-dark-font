@@ -114,7 +114,7 @@ export function WelcomeModal() {
             {tr("welcome.highlight")}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-8 flex flex-row justify-center gap-3">
             <Link to="/contact" onClick={close} className="btn-accent">
               {tr("welcome.primary")}
               <ArrowRight className="h-4 w-4 rtl:rotate-180" />

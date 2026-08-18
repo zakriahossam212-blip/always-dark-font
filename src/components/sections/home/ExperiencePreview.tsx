@@ -27,7 +27,7 @@ export function ExperiencePreview() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`rounded-full px-6 py-2.5 font-sans text-xs font-black tracking-[0.2em] uppercase transition-all ${
+              className={`rounded-xl px-6 py-2.5 font-sans text-xs font-black tracking-[0.2em] uppercase transition-all ${
                 activeTab === tab
                   ? "bg-foreground text-background shadow-md scale-105"
                   : "bg-foreground/10 text-foreground border border-border hover:bg-foreground/20"

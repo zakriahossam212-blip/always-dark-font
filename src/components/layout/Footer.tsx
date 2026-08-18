@@ -146,7 +146,7 @@ export function Footer() {
 
             {/* Copyright */}
             <p className="text-center md:text-end font-sans text-[10px] sm:text-[11px] font-bold tracking-[0.18em] text-foreground/80 uppercase leading-tight">
-              {tr("footer.copyright")}
+              {tr("footer.copyright").replace("{year}", String(new Date().getFullYear()))}
               <br />
               {tr("footer.rights")}
             </p>
