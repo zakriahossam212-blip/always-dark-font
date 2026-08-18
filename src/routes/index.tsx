@@ -1,24 +1,45 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/sections/Hero";
+import { AboutPreview } from "@/components/sections/home/AboutPreview";
+import { SkillsPreview } from "@/components/sections/home/SkillsPreview";
+import { Projects } from "@/components/sections/Projects";
+import { ExperiencePreview } from "@/components/sections/home/ExperiencePreview";
+import { Testimonials } from "@/components/sections/Testimonials";
+import { ContactCta } from "@/components/sections/home/ContactCta";
+import heroIso from "@/assets/hero-iso.webp";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Oskar Kadera | Visual Artist & Illustrator" },
+      {
+        name: "description",
+        content:
+          "World known British Visual Artist and Illustrator portfolio.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: "/" },
+      { rel: "preload", as: "image", href: heroIso, fetchPriority: "high" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen overflow-x-hidden">
+      <Navbar />
+      <main>
+        <Hero />
+        <Projects />
+        <ExperiencePreview />
+        <AboutPreview />
+        <Testimonials />
+      </main>
+      <Footer />
     </div>
   );
 }
