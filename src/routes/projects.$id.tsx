@@ -101,7 +101,7 @@ function ProjectDetail() {
   const prevProject = index > 0 ? (projects[index - 1] ?? null) : null;
 
   return (
-    <PageShell contained={false} padded={false} disableOverflowX className="pb-24 pt-24 sm:pt-32">
+    <PageShell contained={false} padded={false} disableOverflowX className="nav-offset pb-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

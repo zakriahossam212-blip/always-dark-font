@@ -106,7 +106,7 @@ export function CredentialFeaturedCard({
       <button
         onClick={onToggle}
         aria-expanded={open}
-        className="group mt-auto inline-flex w-full items-center justify-center gap-3 rounded-xl border border-border bg-background px-6 py-3 shadow-md transition-transform hover:scale-[1.03]"
+        className="group btn-surface mt-auto w-full"
       >
         <span className="grid size-6 place-items-center rounded-xl bg-primary text-primary-foreground">
           <motion.span

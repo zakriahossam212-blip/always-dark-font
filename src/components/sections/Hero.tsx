@@ -7,7 +7,7 @@ export function Hero() {
   const { tr, dir } = useI18n();
 
   return (
-    <section className="section-shell relative overflow-hidden pb-16 pt-32 select-none sm:pt-36 md:pt-40">
+    <section className="section-shell nav-offset-lg relative overflow-hidden pb-16 select-none">
       <div className="container-page grid items-center gap-10 lg:grid-cols-2">
         {/* Left Column Text & Action */}
         <div className="relative z-10 text-center lg:text-start">
@@ -37,7 +37,7 @@ export function Hero() {
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
               <a
                 href="#works"
-                className="group inline-flex items-center gap-3 rounded-xl bg-card px-7 py-3.5 shadow-lg border border-border transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                className="group btn-surface"
               >
                 <span className="grid size-7 place-items-center rounded-xl bg-primary text-primary-foreground shadow-sm transition-transform duration-300 group-hover:rotate-12">
                   <Play
@@ -53,7 +53,7 @@ export function Hero() {
                 href="/cv/Mostafa_Samir_CV.pdf"
                 download="Mostafa_Samir_CV.pdf"
                 type="application/pdf"
-                className="group inline-flex items-center gap-3 rounded-xl bg-primary px-7 py-3.5 shadow-lg border border-primary transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                className="group btn-accent"
               >
                 <span className="grid size-7 place-items-center rounded-xl bg-primary-foreground/15 text-primary-foreground transition-transform duration-300 group-hover:translate-y-0.5">
                   <Download className="size-3.5" />

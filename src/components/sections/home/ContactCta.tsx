@@ -20,14 +20,14 @@ export function ContactCta() {
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 type-label text-primary-foreground shadow-md transition-all hover:scale-105"
+                className="group btn-accent type-label"
               >
                 Start a conversation
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 rtl:rotate-180" />
               </Link>
               <a
                 href="mailto:m.ssaid356@gmail.com"
-                className="inline-flex items-center gap-2 rounded-xl border border-border px-7 py-3.5 type-label text-foreground transition-colors hover:border-primary/50 hover:text-primary"
+                className="pill-outline type-label text-foreground"
               >
                 <Mail className="size-4" />
                 Email directly

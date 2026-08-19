@@ -15,7 +15,7 @@ export function ProjectsExplorer() {
   const explorer = useProjectsExplorer();
 
   return (
-    <section className="section-shell section-y pt-24 md:pt-28">
+    <section className="section-shell section-y nav-offset">
       <div className="container-page">
         <Reveal>
           <header className="mb-8 max-w-2xl text-center md:text-start">

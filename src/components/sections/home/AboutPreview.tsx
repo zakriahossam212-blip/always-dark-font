@@ -8,7 +8,7 @@ export function AboutPreview() {
   return (
     <section className="section-shell section-y select-none">
       <div className="container-page">
-        <div className="relative rounded-2xl bg-card p-6 sm:p-10 lg:p-14 border border-border shadow-glow overflow-hidden">
+        <div className="relative surface-card overflow-hidden p-6 sm:p-10 lg:p-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-center">
             {/* Left Column (5 cols) */}
             <div className="lg:col-span-6 flex flex-col justify-center items-start">
@@ -46,14 +46,14 @@ export function AboutPreview() {
               <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <Link
                   to="/about"
-                  className="group inline-flex items-center justify-center gap-3 rounded-xl bg-primary px-6 py-3 text-primary-foreground shadow-md transition-transform hover:scale-105"
+                  className="group btn-accent"
                 >
                   <span className="type-label">ABOUT ME</span>
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1 rtl:rotate-180" />
                 </Link>
                 <Link
                   to="/projects"
-                  className="group inline-flex items-center justify-center gap-3 rounded-xl bg-background px-6 py-3 shadow-md border border-border transition-transform hover:scale-105"
+                  className="group btn-surface"
                 >
                   <span className="type-label text-foreground">VIEW CASES</span>
                   <ArrowRight className="size-4 text-foreground transition-transform group-hover:translate-x-1 rtl:rotate-180" />
