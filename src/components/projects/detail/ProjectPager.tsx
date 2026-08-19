@@ -36,7 +36,7 @@ function PagerCard({ project, direction }: { project: Project; direction: "prev"
     <Link
       to="/projects/$id"
       params={{ id: project.id }}
-      className={`group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-lg transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl ${
+      className={`group relative overflow-hidden surface-card-interactive p-8 ${
         isNext ? "text-end" : ""
       }`}
     >

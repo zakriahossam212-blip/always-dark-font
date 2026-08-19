@@ -69,7 +69,7 @@ function ContactPage() {
           {CHANNELS.map(({ Icon, labelKey, value, valueKey, href }) => (
             <div
               key={labelKey}
-              className="flex flex-col items-center justify-center rounded-2xl border border-border bg-card p-7 text-center shadow-lg transition-transform hover:-translate-y-1"
+              className="flex flex-col items-center justify-center surface-card-interactive p-6 text-center"
             >
               <div className="mb-4 grid size-12 place-items-center rounded-xl border border-border bg-foreground/10 text-card-foreground">
                 <Icon className="size-5 text-primary" />

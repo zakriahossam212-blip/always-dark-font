@@ -41,7 +41,7 @@ export function PageShell({
         ref={mainRef}
         className={cn(
           "flex-1",
-          padded && "pb-16 pt-24 sm:pt-28",
+          padded && "nav-offset pb-16",
           contained && "container-page page-gutter",
           className,
         )}

@@ -620,6 +620,59 @@
   padding-block: clamp(4rem, 8vw, 7rem);
 }
 
+/* Fixed-navbar clearance. The single source of truth for the top padding of
+   every first-in-page block — no route may hand-roll `pt-24 sm:pt-28`. */
+@utility nav-offset {
+  padding-top: clamp(5.5rem, 8vw, 7rem);
+}
+
+/* Same clearance, hero scale: the home/404 heroes need extra breathing room. */
+@utility nav-offset-lg {
+  padding-top: clamp(7rem, 11vw, 10rem);
+}
+
+/* --- Surfaces -------------------------------------------------------------
+ * One card surface for the whole app: radius, border, background, elevation.
+ * Callers add padding from the p-6 / p-8 step only — never their own radius,
+ * border, background or `shadow-md/lg/xl`.
+ * ---------------------------------------------------------------------- */
+@utility surface-card {
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--card-foreground);
+  box-shadow: var(--glow);
+}
+
+/* Card surface that reacts to pointer: lift + accent border on hover. */
+@utility surface-card-interactive {
+  @apply surface-card;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.35s ease;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--accent) 50%, transparent);
+    box-shadow: var(--lift);
+  }
+}
+
+/* Neutral card-coloured button (the "secondary" action next to btn-accent). */
+@utility btn-surface {
+  @apply btn-base;
+  background: var(--card);
+  color: var(--card-foreground);
+  border-color: var(--border);
+  box-shadow: var(--glow);
+  &:hover:not(:disabled) {
+    transform: scale(1.03);
+    border-color: color-mix(in oklab, var(--accent) 50%, transparent);
+  }
+}
+
+
+
 
 :root {
   --radius: 1.25rem;

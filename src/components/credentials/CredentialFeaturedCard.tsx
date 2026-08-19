@@ -31,7 +31,7 @@ export function CredentialFeaturedCard({
       initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: EASE, delay: reduce ? 0 : 0.08 * index }}
-      className="relative flex h-full min-w-0 flex-col items-center rounded-2xl border border-border bg-card p-6 text-center shadow-glow sm:p-7 lg:p-8"
+      className="relative flex h-full min-w-0 flex-col items-center surface-card p-6 text-center sm:p-8"
     >
       <span className="mb-6 rounded-xl border border-border bg-foreground/10 px-4 py-1 type-micro text-primary">
         {item.year}
@@ -106,7 +106,7 @@ export function CredentialFeaturedCard({
       <button
         onClick={onToggle}
         aria-expanded={open}
-        className="group mt-auto inline-flex w-full items-center justify-center gap-3 rounded-xl border border-border bg-background px-6 py-3 shadow-md transition-transform hover:scale-[1.03]"
+        className="group btn-surface mt-auto w-full"
       >
         <span className="grid size-6 place-items-center rounded-xl bg-primary text-primary-foreground">
           <motion.span
