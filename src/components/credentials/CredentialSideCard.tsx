@@ -20,7 +20,7 @@ export function CredentialSideCard({ item, lang, reduce, index }: CredentialSide
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: EASE, delay: reduce ? 0 : 0.08 * index }}
       whileHover={reduce ? {} : { y: -6 }}
-      className="flex h-full min-w-0 flex-col items-center justify-center rounded-2xl border border-border bg-card p-5 text-center shadow-md transition-colors hover:bg-card/90 sm:p-6"
+      className="flex h-full min-w-0 flex-col items-center justify-center surface-card p-6 text-center transition-colors hover:bg-card/90"
     >
       <div className="mb-3 grid size-12 place-items-center rounded-xl bg-foreground/10 text-foreground">
         <Icon className="size-6 text-primary" />

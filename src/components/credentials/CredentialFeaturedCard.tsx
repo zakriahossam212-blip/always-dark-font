@@ -31,7 +31,7 @@ export function CredentialFeaturedCard({
       initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: EASE, delay: reduce ? 0 : 0.08 * index }}
-      className="relative flex h-full min-w-0 flex-col items-center rounded-2xl border border-border bg-card p-6 text-center shadow-glow sm:p-7 lg:p-8"
+      className="relative flex h-full min-w-0 flex-col items-center surface-card p-6 text-center sm:p-8"
     >
       <span className="mb-6 rounded-xl border border-border bg-foreground/10 px-4 py-1 type-micro text-primary">
         {item.year}

@@ -22,7 +22,7 @@ export function RelatedProjects({ projects }: { projects: Project[] }) {
             key={item.id}
             to="/projects/$id"
             params={{ id: item.id }}
-            className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl"
+            className="group overflow-hidden surface-card-interactive"
           >
             <div className="aspect-[16/10] overflow-hidden">
               <SmartImage

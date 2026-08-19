@@ -56,7 +56,7 @@ export function Contact({ showHeading = true }: { showHeading?: boolean } = {}) 
               // Warm the success animation as soon as the user starts typing, so
               // it is already cached when the form flips to the sent state.
               onFocusCapture={() => prefetchLottie("/lottie/contact-success.lottie")}
-              className="rounded-2xl bg-card border border-border shadow-glow space-y-5 p-7"
+              className="surface-card space-y-5 p-6 sm:p-8"
             >
               <div>
                 <label

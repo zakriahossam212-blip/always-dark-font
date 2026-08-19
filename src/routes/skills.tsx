@@ -50,7 +50,7 @@ function SkillsPage() {
           {skillGroups.map(({ title, icon, skills }) => {
             const Icon: LucideIcon = SKILL_ICONS[icon] ?? Code;
             return (
-              <div key={title} className="rounded-2xl border border-border bg-card p-8 shadow-glow">
+              <div key={title} className="surface-card p-8">
                 <div className="mb-6 flex items-center gap-3">
                   <div className="grid size-10 place-items-center rounded-xl border border-border bg-foreground/10 text-primary">
                     <Icon className="size-5" />

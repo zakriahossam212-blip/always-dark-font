@@ -16,7 +16,7 @@ export function ProjectArchitecture({
   return (
     <section>
       <DetailSectionHeader icon={Code2} title={tr("project.detail.arch")} />
-      <div className="rounded-2xl border border-border bg-card p-8 shadow-glow">
+      <div className="surface-card p-8">
         <TechStack techs={techs} />
         {detail.architecture.length > 0 && (
           <>
@@ -87,7 +87,7 @@ export function ProjectOutcomes({ detail }: { detail: ProjectDetailContent }) {
   return (
     <section>
       <DetailSectionHeader icon={TrendingUp} title={tr("project.detail.outcomes")} />
-      <div className="rounded-2xl border border-border bg-card p-8">
+      <div className="surface-card p-8">
         <ul className="space-y-4">
           {detail.outcomes.map((outcome) => (
             <li key={outcome} className="flex gap-3 type-body text-foreground/70">

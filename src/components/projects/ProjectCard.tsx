@@ -35,7 +35,7 @@ export function ProjectCard({ project, index, view = "grid" }: ProjectCardProps)
         delay: reduce ? 0 : Math.min(index, 6) * 0.04,
         layout: layoutTransition(reduce),
       }}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-card border border-border p-6 shadow-glow transition-all duration-300 hover:-translate-y-2 hover:border-border/60 text-card-foreground"
+      className="group relative flex h-full flex-col overflow-hidden surface-card-interactive p-6"
     >
       <ProjectCardImage project={project} priority={index < 3} />
 

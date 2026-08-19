@@ -46,7 +46,7 @@ function NarrativeCard({
   body: string;
 }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-8">
+    <div className="surface-card p-8">
       <div className="mb-4 flex items-center gap-3 text-primary">
         <Icon className="size-5" />
         <h3 className="type-label">{title}</h3>
@@ -66,7 +66,7 @@ export function ProjectFeatures({ detail }: { detail: ProjectDetailContent }) {
         {detail.features.map((feature, index) => (
           <div
             key={feature.title}
-            className="rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50"
+            className="surface-card-interactive p-6"
           >
             <div className="type-micro mb-3 font-mono text-primary normal-case">
               {String(index + 1).padStart(2, "0")}
