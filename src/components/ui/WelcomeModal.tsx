@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles, X } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 
 const STORAGE_KEY = "welcome-modal-seen";
 const DELAY_MS = 10_000;
@@ -76,7 +77,7 @@ export function WelcomeModal() {
         aria-describedby="welcome-modal-body"
         dir={dir}
         onClick={(event) => event.stopPropagation()}
-        className="relative border border-border bg-card w-full max-w-lg overflow-hidden rounded-3xl p-8 text-center shadow-2xl animate-scale-in sm:p-10"
+        className="relative border border-border bg-card w-full max-w-lg overflow-hidden rounded-2xl p-8 text-center shadow-2xl animate-scale-in sm:p-10"
       >
         <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" />
 
@@ -85,52 +86,54 @@ export function WelcomeModal() {
           type="button"
           onClick={close}
           aria-label={tr("welcome.close")}
-          className="absolute end-4 top-4 rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          className="absolute end-4 top-4 rounded-xl p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
         >
           <X className="h-4 w-4" />
         </button>
 
         <div className="relative">
+          <LottieIcon
+            src="/lottie/welcome-hello.lottie"
+            className="mx-auto mb-1 h-32 w-40"
+            fallback={<Sparkles className="mx-auto h-10 w-10 text-accent" />}
+          />
+
           <span className="chip mx-auto">
             <Sparkles className="h-3.5 w-3.5" />
             {tr("welcome.eyebrow")}
           </span>
 
-          <h2
-            id="welcome-modal-title"
-            className="mt-5 text-3xl font-black leading-tight tracking-tight text-foreground sm:text-4xl"
-          >
+          <h2 id="welcome-modal-title" className="mt-5 type-h2 text-foreground">
             {tr("welcome.title")}
           </h2>
 
-          <p
-            id="welcome-modal-body"
-            className="mt-4 text-base leading-relaxed text-muted-foreground"
-          >
+          <p id="welcome-modal-body" className="mt-4 type-lead text-muted-foreground">
             {tr("welcome.body")}
           </p>
 
-          <p className="mt-4 text-sm font-semibold text-accent">
-            {tr("welcome.highlight")}
-          </p>
+          <p className="mt-4 type-body-strong text-accent">{tr("welcome.highlight")}</p>
 
-          <div className="mt-8 flex flex-row justify-center gap-3">
-            <Link to="/contact" onClick={close} className="btn-accent">
+          <div className="mt-8 grid grid-cols-1 gap-3">
+            <Link
+              to="/contact"
+              onClick={close}
+              className="btn-accent w-full items-center justify-center gap-2 whitespace-nowrap py-4 type-body-sm"
+            >
               {tr("welcome.primary")}
               <ArrowRight className="h-4 w-4 rtl:rotate-180" />
             </Link>
-            <Link to="/projects" onClick={close} className="btn-accent-outline">
+            <Link
+              to="/projects"
+              onClick={close}
+              className="btn-accent-outline w-full items-center justify-center gap-2 whitespace-nowrap py-4 type-body-sm"
+            >
               {tr("welcome.secondary")}
             </Link>
           </div>
 
-          <p className="eyebrow mt-6 text-muted-foreground">
-            {tr("welcome.footnote")}
-          </p>
+          <p className="eyebrow mt-6 text-muted-foreground">{tr("welcome.footnote")}</p>
         </div>
       </div>
     </div>
   );
 }
-
-export default WelcomeModal;

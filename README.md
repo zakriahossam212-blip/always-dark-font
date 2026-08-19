@@ -1,12 +1,12 @@
-# Lovable Arabic UI
+# Profile Refiner
 
-clone this repo https://github.com/Mostafa-SAID7/refined-marketplace to fix lang have and rtl and all related with lang ar and also font using fontfamily more related from have
+clone this https://github.com/amin3said66-prog/refined-bazaar when from have i need split Skills,Experience,Contact to pages and more related inner when from home or about have shorten and focus points not have duplictae from pages have
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/3be6a85e-b5eb-4330-ac31-acdc0e3f49cc).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5c0d02ef-3482-450d-ba88-673ae8ca8803).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.

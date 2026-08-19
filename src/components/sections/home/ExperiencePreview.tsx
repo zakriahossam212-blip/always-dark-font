@@ -1,97 +1,303 @@
-import { useState } from "react";
-import { MapPin, MessageSquare, ChevronRight, ArrowRight } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Link } from "@tanstack/react-router";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  Building2,
+  Layers,
+  GraduationCap,
+  BadgeCheck,
+  ArrowRight,
+  Calendar,
+  MapPin,
+  ChevronDown,
+  ShieldCheck,
+} from "lucide-react";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useI18n } from "@/lib/i18n";
+import { credentials, credentialTabs, type CredentialTab } from "@/data";
 
-const eventsData = [
-  { id: "we3ds", year: "2024", iconText: "⚡" },
-  { id: "freelance", year: "2023", iconText: "AR" },
-  { id: "platform", year: "2024", iconText: "●", featured: true },
-  { id: "degree", year: "2021", iconText: "❖" },
-];
+const tabIcons: Record<CredentialTab, typeof Building2> = {
+  work: Building2,
+  projects: Layers,
+  education: GraduationCap,
+  certifications: BadgeCheck,
+};
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function ExperiencePreview() {
-  const [activeTab, setActiveTab] = useState("TALKS");
-  const { tr } = useI18n();
+  const [activeTab, setActiveTab] = useState<CredentialTab>("work");
+  const [openId, setOpenId] = useState<string | null>(null);
+  const { tr, lang } = useI18n();
+  const reduce = useReducedMotion();
+
+  const items = useMemo(() => credentials.filter((c) => c.tab === activeTab), [activeTab]);
+  const ActiveIcon = tabIcons[activeTab];
+
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: reduce ? { duration: 0 } : { staggerChildren: 0.04, delayChildren: 0.05 },
+    },
+    exit: reduce
+      ? { opacity: 0, transition: { duration: 0 } }
+      : { opacity: 0, x: -16, transition: { duration: 0.2, ease: EASE } },
+  };
+
+  const rowVariants = reduce
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : {
+        hidden: { opacity: 0, y: 14 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.35, ease: EASE } },
+      };
 
   return (
-    <section id="events" className="w-full bg-background py-20 px-4 sm:px-8 md:px-12 text-foreground select-none">
-      <div className="mx-auto max-w-5xl">
-        {/* Title */}
-        <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-center text-foreground mb-8 tracking-tight">
-          {tr("events.title")}
-        </h2>
+    <section
+      id="events"
+      className="section-shell section-y"
+    >
+      <div className="container-narrow">
+        <SectionHeading title={tr("events.title")} description={tr("events.desc")} />
 
-        {/* Filter Tabs */}
-        <div className="flex items-center justify-center gap-3 mb-12">
-          {["INTERVIEWS", "TALKS", "EXHIBITION"].map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`rounded-xl px-6 py-2.5 font-sans text-xs font-black tracking-[0.2em] uppercase transition-all ${
-                activeTab === tab
-                  ? "bg-foreground text-background shadow-md scale-105"
-                  : "bg-foreground/10 text-foreground border border-border hover:bg-foreground/20"
-              }`}
-            >
-              {tr(`events.tab.${tab.toLowerCase()}`)}
-            </button>
-          ))}
+        {/* Tabs */}
+        <div
+          role="tablist"
+          aria-label={tr("events.title")}
+          className="mt-10 mb-10 flex flex-wrap items-center justify-center gap-3"
+        >
+          {credentialTabs.map((id) => {
+            const Icon = tabIcons[id];
+            const active = activeTab === id;
+            const count = credentials.filter((c) => c.tab === id).length;
+            return (
+              <button
+                key={id}
+                role="tab"
+                aria-selected={active}
+                onClick={() => {
+                  setActiveTab(id);
+                  setOpenId(null);
+                }}
+                className={`relative inline-flex items-center gap-2 whitespace-nowrap rounded-xl px-5 py-2.5 type-label transition-colors ${
+                  active
+                    ? "text-background"
+                    : "border border-border bg-foreground/5 text-foreground hover:bg-foreground/15"
+                }`}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="career-tab-pill"
+                    className="absolute inset-0 rounded-xl bg-foreground shadow-md"
+                    transition={
+                      reduce ? { duration: 0 } : { type: "spring", stiffness: 420, damping: 34 }
+                    }
+                  />
+                )}
+                <span className="relative z-10 inline-flex items-center gap-2">
+                  <Icon className="size-3.5" />
+                  {tr(`events.tab.${id}`)}
+                  <span
+                    className={`rounded-md px-1.5 py-0.5 type-tag ${
+                      active ? "bg-background/20" : "bg-foreground/10"
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Event Rows */}
-        <div className="flex flex-col gap-4">
-          {eventsData.map(({ id, year, iconText, featured }) => (
-            <div
-              key={id}
-              className={`flex flex-col sm:flex-row items-center justify-between gap-4 p-5 sm:p-6 rounded-[2rem] transition-all duration-300 ${
-                featured
-                  ? "bg-foreground text-background shadow-[var(--shadow-glow)] scale-[1.02]"
-                  : "bg-card text-card-foreground border border-border shadow-md hover:bg-card/90"
-              }`}
-            >
-              <div className="flex items-center gap-6 sm:gap-8 w-full sm:w-auto">
-                <span dir="ltr" className="font-['Oswald',sans-serif] text-sm font-bold opacity-80 min-w-10">
-                  {year}
-                </span>
+        {/* Rows */}
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={activeTab}
+            variants={listVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="flex flex-col gap-4"
+          >
+            {items.length === 0 && (
+              <p className="text-center type-body text-muted-foreground">{tr("events.empty")}</p>
+            )}
 
-                <div
-                  className={`grid size-10 place-items-center rounded-full font-black text-sm ${
-                    featured ? "bg-primary text-primary-foreground" : "bg-foreground/15 text-primary"
+            {items.map((item) => {
+              const open = openId === item.id;
+              const featured = item.featured;
+              return (
+                <motion.article
+                  key={item.id}
+                  variants={rowVariants}
+                  whileHover={reduce || featured ? {} : { y: -3 }}
+                  transition={{ duration: 0.25, ease: EASE }}
+                  className={`overflow-hidden rounded-2xl ${
+                    featured
+                      ? "bg-foreground text-background shadow-glow"
+                      : "border border-border bg-card text-card-foreground shadow-md hover:shadow-lg"
                   }`}
                 >
-                  {iconText}
-                </div>
+                  <button
+                    onClick={() => setOpenId(open ? null : item.id)}
+                    aria-expanded={open}
+                    className="flex w-full flex-col gap-4 p-5 text-start sm:flex-row sm:items-center sm:justify-between sm:p-6"
+                  >
+                    <div className="flex items-center gap-5 sm:gap-7">
+                      <span
+                        dir="ltr"
+                        className="min-w-10 type-wordmark [--wordmark-size:0.875rem] opacity-80"
+                      >
+                        {item.year}
+                      </span>
 
-                <h3
-                  className={`font-['Oswald',sans-serif] text-xl sm:text-2xl font-bold tracking-tight ${
-                    featured ? "text-background" : "text-card-foreground"
-                  }`}
-                >
-                  {tr(`events.item.${id}.name`)}
-                </h3>
-              </div>
+                      <div
+                        className={`grid size-10 shrink-0 place-items-center rounded-xl ${
+                          featured
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-foreground/10 text-primary"
+                        }`}
+                      >
+                        <ActiveIcon className="size-4" />
+                      </div>
 
-              <div className="flex items-center gap-6 sm:gap-8 w-full sm:w-auto justify-between sm:justify-end">
-                <div className="flex items-center gap-1.5 text-xs font-bold opacity-90">
-                  <MapPin className="size-3.5 text-primary" />
-                  <span>{tr(`events.item.${id}.location`)}</span>
-                </div>
+                      <div className="min-w-0">
+                        <h3 className="type-h4">{item.title[lang]}</h3>
+                        <p
+                          className={`mt-1 type-meta ${
+                            featured ? "opacity-80" : "text-muted-foreground"
+                          }`}
+                        >
+                          {item.org[lang]} · {item.location[lang]}
+                        </p>
+                      </div>
+                    </div>
 
-                <div className="flex items-center gap-1.5 text-xs font-bold opacity-90">
-                  <MessageSquare className="size-3.5 text-primary" />
-                  <span>{tr(`events.item.${id}.topic`)}</span>
-                </div>
-
-                {featured ? (
-                  <button className="grid size-10 place-items-center rounded-xl bg-primary text-primary-foreground shadow-sm hover:scale-105 transition-transform">
-                    <ArrowRight className="size-4 stroke-[3] rtl:rotate-180" />
+                    <div className="flex items-center gap-3 sm:max-w-[20rem] sm:justify-end">
+                      <p
+                        className={`type-meta sm:text-end ${
+                          featured ? "opacity-90" : "text-muted-foreground"
+                        }`}
+                      >
+                        {item.summary[lang]}
+                      </p>
+                      <motion.span
+                        animate={{ rotate: open ? 180 : 0 }}
+                        transition={reduce ? { duration: 0 } : { duration: 0.35, ease: EASE }}
+                        className="shrink-0"
+                      >
+                        <ChevronDown className="size-4" />
+                      </motion.span>
+                    </div>
                   </button>
-                ) : (
-                  <ChevronRight className="size-5 opacity-60 rtl:rotate-180" />
-                )}
-              </div>
-            </div>
-          ))}
+
+                  <AnimatePresence initial={false}>
+                    {open && (
+                      <motion.div
+                        key="detail"
+                        initial={
+                          reduce ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
+                        }
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={reduce ? { height: 0, opacity: 0 } : { height: 0, opacity: 0 }}
+                        transition={reduce ? { duration: 0 } : { duration: 0.35, ease: EASE }}
+                        className="overflow-hidden"
+                      >
+                        <div
+                          className={`border-t px-5 pb-6 pt-5 sm:px-6 ${
+                            featured ? "border-background/20" : "border-border"
+                          }`}
+                        >
+                          <div className="flex flex-wrap items-center gap-4 type-meta">
+                            <span className="inline-flex items-center gap-1.5 opacity-80">
+                              <Calendar className="size-3.5" />
+                              {item.period[lang]}
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 opacity-80">
+                              <MapPin className="size-3.5" />
+                              {item.location[lang]}
+                            </span>
+                            {item.credentialId && (
+                              <span
+                                className="inline-flex items-center gap-1.5 opacity-80"
+                                dir="ltr"
+                              >
+                                <ShieldCheck className="size-3.5" />
+                                {tr("events.credentialId")}: {item.credentialId}
+                              </span>
+                            )}
+                            {item.status && (
+                              <span
+                                className={`rounded-md px-2 py-0.5 type-micro ${
+                                  featured ? "bg-background/20" : "bg-primary/10 text-primary"
+                                }`}
+                              >
+                                {item.status[lang]}
+                              </span>
+                            )}
+                          </div>
+
+                          <motion.ul
+                            className="mt-4 space-y-2"
+                            initial="hidden"
+                            animate="visible"
+                            variants={{
+                              hidden: {},
+                              visible: {
+                                transition: reduce
+                                  ? { duration: 0 }
+                                  : { staggerChildren: 0.04, delayChildren: 0.12 },
+                              },
+                            }}
+                          >
+                            {item.highlights[lang].map((point) => (
+                              <motion.li
+                                key={point}
+                                variants={rowVariants}
+                                className={`flex gap-2.5 type-body-sm ${
+                                  featured ? "opacity-90" : "text-muted-foreground"
+                                }`}
+                              >
+                                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" />
+                                <span>{point}</span>
+                              </motion.li>
+                            ))}
+                          </motion.ul>
+
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            {item.stack.map((tech) => (
+                              <span
+                                key={tech}
+                                dir="ltr"
+                                className={`rounded-lg px-2.5 py-1 type-tag ${
+                                  featured
+                                    ? "bg-background/15"
+                                    : "bg-foreground/5 border border-border"
+                                }`}
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.article>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            to="/experience"
+            className="inline-flex items-center gap-2 rounded-xl border border-border bg-foreground/5 px-6 py-3 type-label transition-colors hover:bg-foreground/15"
+          >
+            {tr("events.cta")}
+            <ArrowRight className="size-3.5 rtl:rotate-180" />
+          </Link>
         </div>
       </div>
     </section>
